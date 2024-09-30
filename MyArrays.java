@@ -24,8 +24,8 @@ public class MyArrays
   }
   public static void Main(String[] args)
   {
-    x = {1, 2, 3, 4};
-    y = {5, 6, 7, 8};
+    int[] x = new int[]{1, 2, 3, 4};
+    int[] y = new int[]{5, 6, 7, 8};
     System.out.println("expected", arrayToString(x), "my function", arrayToString(returnCopy(x)));
     System.out.print("expected", arrayToString(x), arrayToString(y), "my function", arrayToString(concatArray(x, y)));
   }
