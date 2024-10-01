@@ -9,10 +9,10 @@ public class ArrayMethods {
     int[] test1 = new int[]{1, 2, 3, 4};
     int[] test2 = new int[]{5, 6, 7, 8};
     int[][] test3 = new int[][]{{1, 2, 3}, {4, 5, 6}};
-    System.out.print(aryToString(test1));
-    System.ou.print(arrToString(test3));
-    System.out.print(arr2DSum(test3));
-    System.out.print(swapRC(test3));
+    System.out.println(aryToString(test1));
+    System.out.println(arrToString(test3));
+    System.out.println(arr2DSum(test3));
+    System.out.println(arrToString(swapRC(test3)));
   }
 
   public static String aryToString(int[] nums) {
@@ -75,7 +75,7 @@ public class ArrayMethods {
 
     for (int i = 0; i < nums.length; i++)
     {
-      for (int x = 0; x < nums[0.length]; x++)
+      for (int x = 0; x < nums[0].length; x++)
       {
         result[x][i] = nums[i][x];
       }
