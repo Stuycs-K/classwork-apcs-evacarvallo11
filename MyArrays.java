@@ -11,22 +11,36 @@ public class MyArrays
   }
   public static int[] concatArray(int[]ary1,int[]ary2)
   {
-    int[] copy = new int[ary1.length + ary2.length];
+    int[] result = new int[ary1.length + ary2.length];
     for (int i = 0; i < ary1.length; i++)
     {
-      copy[i] = ary1[i];
+      result[i] = ary1[i];
     }
-    for (int i = ary1.length; i < ary2.length; i++)
+    int x = 0;
+    for (int i = ary1.length; i < result.length; i++)
     {
-      copy[i] = ary2[i];
+      result[i] = ary2[x];
+      x++;
     }
-    return copy;
+    return result;
   }
-  public static void Main(String[] args)
+  public static void main(String[] args)
   {
     int[] x = new int[]{1, 2, 3, 4};
     int[] y = new int[]{5, 6, 7, 8};
-    System.out.println("expected", arrayToString(x), "my function", arrayToString(returnCopy(x)));
-    System.out.print("expected", arrayToString(x), arrayToString(y), "my function", arrayToString(concatArray(x, y)));
+    System.out.println(arrayToString(returnCopy(x)));
+    System.out.print(arrayToString(concatArray(x, y)));
   }
-}
+
+
+    public static String arrayToString(int[] nums) {
+    String fin = "[";
+    for (int i = 0; i < nums.length; i++) {
+      fin += nums[i] + "";
+      if (i < nums.length - 1) {
+        fin += ", ";
+      }
+    }
+    return fin + "]";
+  }
+  }
