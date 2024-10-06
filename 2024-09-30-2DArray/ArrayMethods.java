@@ -9,16 +9,18 @@ public class ArrayMethods {
     int[] test1 = new int[]{1, 2, 3, 4};
     int[] test2 = new int[]{5, 6, 7, 8};
     int[][] test3 = new int[][]{{1, 2, 3}, {4, 5, 6}};
-    int[][] test4 = new int[][]{{-1, -2, 3}, {-2, - 5. -6} {-7, -8. -9}};
+    int[][] test4 = new int[][]{{-1, -2, 3}, {-2, - 5, -6}, {-7, -8, -9}};
     int[][] test5 = new int[][]{{1, 4, 5}, {8, 9, 10}};
     System.out.println(aryToString(test1));
     System.out.println(arrToString(test3));
     System.out.println(arr2DSum(test3));
     System.out.println(arrToString(swapRC(test3)));
-    System.out.println(arrToString(replaceNegative(test4)));
-    System.out.println(arrToString(copy(test5)));
+    replaceNegative(test4);
+    System.out.println(arrToString(test4));
+    int[][] copiedArray = copy(test5);
+    System.out.println(arrToString(copiedArray));
     test5[1][1] = 11;
-    System.out.println(arrToString(copy(test5)));
+    System.out.println(arrToString(copiedArray));
   }
 
   public static String aryToString(int[] nums) {
@@ -114,9 +116,10 @@ public class ArrayMethods {
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
   public static int[][] copy(int[][] nums){
+    int[][] len0 = new int[0][0];
     if (nums.length == 0)
     {
-      return [];
+      return len0;
     }
     int[][] result = new int[nums.length][];
     for (int i = 0; i < nums.length; i++)
@@ -128,9 +131,10 @@ public class ArrayMethods {
 
 public static int[] copyRow(int[] nums)
 {
+  int[] len0 = new int[0];
   if (nums.length == 0)
   {
-    return [];
+    return len0;
   }
   int[] result = new int[nums.length];
   for (int i = 0; i < nums.length; i++)
