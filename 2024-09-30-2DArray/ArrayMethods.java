@@ -9,10 +9,16 @@ public class ArrayMethods {
     int[] test1 = new int[]{1, 2, 3, 4};
     int[] test2 = new int[]{5, 6, 7, 8};
     int[][] test3 = new int[][]{{1, 2, 3}, {4, 5, 6}};
+    int[][] test4 = new int[][]{{-1, -2, 3}, {-2, - 5. -6} {-7, -8. -9}};
+    int[][] test5 = new int[][]{{1, 4, 5}, {8, 9, 10}};
     System.out.println(aryToString(test1));
     System.out.println(arrToString(test3));
     System.out.println(arr2DSum(test3));
     System.out.println(arrToString(swapRC(test3)));
+    System.out.println(arrToString(replaceNegative(test4)));
+    System.out.println(arrToString(copy(test5)));
+    test5[1][1] = 11;
+    System.out.println(arrToString(copy(test5)));
   }
 
   public static String aryToString(int[] nums) {
@@ -82,5 +88,55 @@ public class ArrayMethods {
     }
     return result;
   }
+ //3. Modify a given 2D array of integer as follows:
+  //Replace all the negative values:
+  //-When the row number is the same as the column number replace
+  //that negative with the value 1
+  //-All other negatives replace with 0
+  public static void replaceNegative(int[][] vals){
+    for (int i = 0; i < vals.length; i++) {
+      for (int j = 0; j < vals[i].length; j++) {
+        if (vals[i][j] < 0) {
+          if (i == j) {
+            vals[i][j] = 1;
+          }
+          else {
+            vals[i][j] = 0;
+          }
+        }
+      }
+    }
+  }
 
+  //4. Make a copy of the given 2d array.
+  //When testing : make sure that changing the original does NOT change the copy.
+  //DO NOT use any built in methods that "copy" an array.
+  //You SHOULD write a helper method for this.
+  //If you don't see a good way to do that, you should stop and look at prior methods.
+  public static int[][] copy(int[][] nums){
+    if (nums.length == 0)
+    {
+      return [];
+    }
+    int[][] result = new int[nums.length][];
+    for (int i = 0; i < nums.length; i++)
+    {
+      result[i] = copyRow(nums[i]);
+    }
+    return result;
+  }
+
+public static int[] copyRow(int[] nums)
+{
+  if (nums.length == 0)
+  {
+    return [];
+  }
+  int[] result = new int[nums.length];
+  for (int i = 0; i < nums.length; i++)
+  {
+    result[i] = nums[i];
+  }
+  return result;
+}
 }
