@@ -5,7 +5,21 @@ public class ArrayDemo{
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
     //do not use any other Arrays.method()
-
+    int[] test1 = new int[]{1, 2, 3, 4};
+    int[][] test3 = new int[][]{{1, 2, 3}, {4, 5, 6}};
+    int[][] test4 = new int[][]{{-1, -2, 3}, {-2, - 5, -6}, {-7, -8, -9}};
+    int[][] test5 = new int[][]{{1, 4, 5}, {8, 9, 10}};
+    System.out.println("my function", arrToString(test1), "arrays.toString function", Arrays.toString(test1));
+    System.out.println("my function", arrToString(test3), "arrays.toString function", Arrays.toString(test3));
+    System.out.println(arr2DSum(test3));
+    System.out.println(Arrays.toString(swapRC(test3)));
+    replaceNegative(test4);
+    System.out.println(Arrays.toString(test4));
+    int[][] copiedArray = copy(test5);
+    System.out.println(Arrays.toString(copiedArray));
+    test5[1][1] = 11;
+    System.out.println(Arrays.toString(copiedArray));
+    System.out.println(htmlTable(test5));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -71,23 +85,70 @@ public class ArrayDemo{
   //that negative with the value 1
   //-All other negatives replace with 0
   public static void replaceNegative(int[][] vals){
-
+    for (int i = 0; i < vals.length; i++) {
+      for (int j = 0; j < vals[i].length; j++) {
+        if (vals[i][j] < 0) {
+          if (i == j) {
+            vals[i][j] = 1;
+          }
+          else {
+            vals[i][j] = 0;
+          }
+        }
+      }
+    }
   }
+
 
   //4. Make a copy of the given 2d array.
   //When testing : make sure that changing the original does NOT change the copy.
   //DO NOT use any built in methods that "copy" an array.
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
-  public static int[][] copy(int[][] nums){
-    return new int[1][1];
+
+   public static int[][] copy(int[][] nums){
+    int[][] len0 = new int[0][0];
+    if (nums.length == 0)
+    {
+      return len0;
+    }
+    int[][] result = new int[nums.length][];
+    for (int i = 0; i < nums.length; i++)
+    {
+      result[i] = copyRow(nums[i]);
+    }
+    return result;
   }
+
+public static int[] copyRow(int[] nums)
+{
+  int[] len0 = new int[0];
+  if (nums.length == 0)
+  {
+    return len0;
+  }
+  int[] result = new int[nums.length];
+  for (int i = 0; i < nums.length; i++)
+  {
+    result[i] = nums[i];
+  }
+  return result;
+}
 
   //5. Rotate an array by returning a new array with the rows and columns swapped.
   //   You may assume the array is rectangular and neither rows nor cols is 0.
   //   e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
   public static int[][] swapRC(int[][]nums){
-    return new int[1][1];
+    int[][] result = new int[nums[0].length][nums.length];
+    for (int i = 0; i < nums.length; i++)
+    {
+      for (int x = 0; x < nums[0].length; x++)
+      {
+        result[x][i] = nums[i][x];
+      }
+    }
+    return result;
+  }
   }
 
   //6. Make an HTML table by putting a table tag around the entire 2d array,
@@ -97,6 +158,20 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String x = "<table>";
+    for (int i = 0; i < nums.length; i++)
+    {
+      x+= "<tr>" + htmlT(nums[i]) + <"</tr>";
+    }
+    return x + "</table>";
+  }
+  public static String htmlT(int[] nums)
+  {
+    String x = "";
+    for (int i = 0; i < nums.length; i++)
+    {
+      x+= "<td>" + nums[i] + "</td>";
+    }
+    return x;
   }
 }
