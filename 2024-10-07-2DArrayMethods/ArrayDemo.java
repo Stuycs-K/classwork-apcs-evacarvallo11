@@ -9,25 +9,25 @@ public class ArrayDemo{
     int[][] test3 = new int[][]{{1, 2, 3}, {4, 5, 6}};
     int[][] test4 = new int[][]{{-1, -2, 3}, {-2, - 5, -6}, {-7, -8, -9}};
     int[][] test5 = new int[][]{{1, 4, 5}, {8, 9, 10}};
-    System.out.println("my function", arrToString(test1), "arrays.toString function", Arrays.toString(test1));
-    System.out.println("my function", arrToString(test3), "arrays.toString function", Arrays.toString(test3));
+    System.out.println("my function" + arrToString(test1) + " arrays.toString function" + Arrays.toString(test1));
+    System.out.println(arrToString(test3));
     System.out.println(arr2DSum(test3));
-    System.out.println(Arrays.toString(swapRC(test3)));
+    System.out.println(arrToString(swapRC(test3)));
     replaceNegative(test4);
-    System.out.println(Arrays.toString(test4));
+    System.out.println(arrToString(test4));
     int[][] copiedArray = copy(test5);
-    System.out.println(Arrays.toString(copiedArray));
+    System.out.println(arrToString(copiedArray));
     test5[1][1] = 11;
-    System.out.println(Arrays.toString(copiedArray));
+    System.out.println(arrToString(copiedArray));
     System.out.println(htmlTable(test5));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
   public static String arrToString(int[]ary){
     String fin = "[";
-    for (int i = 0; i < nums.length; i++) {
-      fin += nums[i] + "";
-      if (i < nums.length - 1) {
+    for (int i = 0; i < ary.length; i++) {
+      fin += ary[i] + "";
+      if (i < ary.length - 1) {
         fin += ", ";
       }
     }
@@ -40,7 +40,7 @@ public class ArrayDemo{
   public static String arrToString(int[][]ary){
      String fin = "[";
     for (int i = 0; i < ary.length; i++) {
-      fin += aryToString(ary[i]);
+      fin += arrToString(ary[i]);
       if (i < ary.length - 1) {
         fin += ", ";
       }
@@ -149,7 +149,7 @@ public static int[] copyRow(int[] nums)
     }
     return result;
   }
-  }
+
 
   //6. Make an HTML table by putting a table tag around the entire 2d array,
   //   tr tags around each row, and td tags around each value.
@@ -161,10 +161,11 @@ public static int[] copyRow(int[] nums)
     String x = "<table>";
     for (int i = 0; i < nums.length; i++)
     {
-      x+= "<tr>" + htmlT(nums[i]) + <"</tr>";
+      x+= "<tr>" + htmlT(nums[i]) + "</tr>";
     }
     return x + "</table>";
   }
+
   public static String htmlT(int[] nums)
   {
     String x = "";
