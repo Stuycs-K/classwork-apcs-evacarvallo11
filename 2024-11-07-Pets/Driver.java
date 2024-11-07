@@ -1,3 +1,7 @@
+//It changed the String that getName() returned by attaching "The Mighty" to the front
+//Since getName is overwritten, speak() now uses the new name
+
+
 public class Driver{
 
   public static void main(String[] args){
