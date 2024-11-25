@@ -34,6 +34,8 @@ class Day1 {
     int y = 0;
     int facing = 0;
     int[][] offset = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1,0}};
+    ArrayList<String> visited = new ArrayList<String>();
+    visited.add(x + "," + y);
     for (int i = 0; i < data.length; i++)
     {
       String dir = data[i].substring(0, 1);
@@ -46,11 +48,30 @@ class Day1 {
       {
         facing = (facing + 1) % 4;
        }
-       x+= offset[facing][0] * dist;
-       y+= offset[facing][1] * dist;
+       for (int j = 0; j < dist; j++)
+       {
+         x+= offset[facing][0];
+         y+= offset[facing][1];
+         boolean before = false;
+         for (int k = 0; k < visited.size(); k++)
+         {
+            if (visited.get(k).equals(x + "," + y))
+            {
+              before = true;
+            }
+         }
+         if (before)
+         {
+           return Math.abs(x) + Math.abs(y);
+         }
+        visited.add(x + "," + y);
+
+       }
 }
     return Math.abs(x) + Math.abs(y);
 }
+
+
 
     public static void main(String[] args) {
 
