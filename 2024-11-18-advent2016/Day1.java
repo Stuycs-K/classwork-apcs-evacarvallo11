@@ -10,11 +10,10 @@ class Day1 {
       {
         line+= inf.nextLine();
       }
-      return line.split(",");
+      return line.split(", ");
     } catch (FileNotFoundException ex) {
-      //File not found what should you do?
       System.out.println("File not found");
-      return null; //you can return from a void function just don't put a value.
+      return new String[0];
     }
     }
 
@@ -31,15 +30,31 @@ class Day1 {
 
   public static int solve(String[] data)
   {
+    int x = 0;
+    int y = 0;
+    int facing = 0;
+    int[][] offset = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1,0}};
     for (int i = 0; i < data.length; i++)
     {
-      
-    }
-  }
+      String dir = data[i].substring(0, 1);
+      int dist = Integer.parseInt(data[i].substring(1));
+      if (dir.equals("L"))
+        {
+          facing = (facing - 1 + 4) % 4;
+        }
+      if (dir.equals("R"))
+      {
+        facing = (facing + 1) % 4;
+       }
+       x+= offset[facing][0] * dist;
+       y+= offset[facing][1] * dist;
+}
+    return Math.abs(x) + Math.abs(y);
+}
 
     public static void main(String[] args) {
 
-      System.out.println(aryToString(parse("input.txt")));
+    System.out.println(solve(parse("input.txt")));
 
     }
   }
