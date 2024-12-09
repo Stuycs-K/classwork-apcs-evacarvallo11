@@ -7,6 +7,7 @@ public class Warrior extends Adventurer
       super(name, hp);
       this.rage = 0;
     }
+
     public String getSpecialName()
     {
       return "Rage";
@@ -19,24 +20,24 @@ public class Warrior extends Adventurer
     {
       this.rage = n;
     }
-    public int getSpecialMax() 
+    public int getSpecialMax()
     {
       return 80;
     }
     public String attack(Adventurer other)
     {
       other.applyDamage(15);
-      return this.getName() + " attacked" + other.getName();
+      return this.getName() + " attacked " + other.getName();
     }
     public String support(Adventurer other)
     {
       other.setHP(other.getHP() + 5);
-      return this.getName() + "support" + other.getName();
+      return this.getName() + "support " + other.getName();
     }
     public String support()
     {
       this.setHP(this.getHP() + 5);
-      return this.getName() + "heals itself";
+      return this.getName() + " heals itself";
         }
     public String specialAttack(Adventurer other)
     {

@@ -1,11 +1,12 @@
+import java.util.Random;
+import java.util.Scanner;
 public class Game{
   public static void main(String[] args)
   {
-    Adventurer player = CodeWarrior();
-    Adventurer enemy = Warrior();
+    Adventurer player = new CodeWarrior();
+    Adventurer enemy = new Warrior("Bob", 15);
     boolean quit = true;
-    boolean wins = true;
-    while(player.getHP() > 0 && enemy.getHP() > 0 && quit && wins)
+    while(player.getHP() > 0 && enemy.getHP() > 0 && quit)
   {
     System.out.println(player.getName() + ", " + player.getHP() + "HP, " + player.getSpecial() + player.getSpecialName());
     System.out.println(enemy.getName() + ", " + enemy.getHP() + "HP, " + enemy.getSpecial() + enemy.getSpecialName());
@@ -40,7 +41,38 @@ public class Game{
       System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
     }
   }
-
+    if (enemy.getHP() > 0)
+    {
+      Random rng = new Random();
+      int x = rng.nextInt(3);
+      if (x == 0)
+      {
+        System.out.println(enemy.attack(player));
+      }
+      if (x == 1)
+      {
+        System.out.println(enemy.specialAttack(player));
+      }
+      if (x == 2)
+      {
+        System.out.println(enemy.support());
+      }
+    }
   }
-
+  if (!quit)
+  {
+    if (enemy.getHP() > player.getHP())
+    {
+      System.out.println("enemy won");
+    }
+    if (enemy.getHP() < player.getHP())
+    {
+      System.out.println("player won");
+    }
+    if (enemy.getHP() == player.getHP())
+    {
+      System.out.println("tied");
+    }
+  }
+}
 }
