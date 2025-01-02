@@ -1,5 +1,5 @@
 public class Fib{
-  public int fb(int n)
+  public static int fb(int n)
   {
     if (n < 2)
     {
@@ -10,5 +10,5 @@ public class Fib{
       return fb(n - 1) + fb(n - 2);
     }
   }
-  
+
 }
